@@ -76,28 +76,6 @@ Overview From the image we can notice that the function that check the malicious
     </item>
     
     <item>
-      <title>Mypost</title>
-      <link>/posts/mypost/</link>
-      <pubDate>Sat, 25 Dec 2021 18:42:51 -0500</pubDate>
-      
-      <guid>/posts/mypost/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Hello Hello2 Hello3 Here is a snip of the code:
-Look me up plz
-خلونا في البداية نتفق ان مترجم قوقل هو الافضل هذه ترجمة معنى الكلمة:  for i in range(101): print( &amp;#34;\r\033[1;36m [&amp;gt;] POC By \033[1;m \033[1;37mMesh3l\033[1;m \033[1;36m ( \033[1;m\033[1;37m@Mesh3l_911\033[1;m\033[1;36m ) &amp;amp; \033[1;m \033[1;37mZ0ldyck\033[1;m\033[1;36m ( \033[1;m\033[1;37m@electronicbots\033[1;m\033[1;36m ) \033[1;m {} \033[1;m&amp;#34;.format( i), &amp;#34;\033[1;36m%\033[1;m&amp;#34;, end=&amp;#34;&amp;#34;) time.sleep(0.02) print(&amp;#34;\n\n&amp;#34;) target = input( &amp;#34;\033[1;36m \nPlease input ur target&amp;#39;s webmin path e.g. ( https://webmin.Mesh3l-Mohammed.com/ ) &amp;gt; \033[1;m&amp;#34;) if target.
-          
-        
-        </description>
-    </item>
-    
-    <item>
       <title></title>
       <link>/img/memorypatching/readme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
