@@ -11,7 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="Introduction ألسلام عليكم  معظمنا واجه ال (Antimalware Scan Interface) أو المعروفة ب `AMSI`. وغالباً واجهتم مشاكل في اي وقت حاولتم تضيفون powershell module مثل `Mimikatz` وغيرها. ال `AMSI` رح يصيرل له load في أي Application يستخدم ال `WIN32 API`. تقدرون تطلعون على ال `AMSI architecture` من الصورة الي بالأسفل  Overview من الصورة نقدر نلاحظ ان ال function المسؤل عن التشيك على الملفات الخبيثة هو `AmsiScanBuffer()` و `AmsiScanString()`. نقدر نستخدم `Process Hacker` ونشوف ايش ال Modules الي جالسة تشتغل مع اي برنامج."
+  content="Introduction Hello everyone. I think we all have faced the (Antimalware Scan Interface) or as known as the AMSI. I also belive you had some problem when loading for example a powershell modules like Mimikatz. In small words, the AMSI will be loaded in any application that uses WIN32 API. You can also check the AMSI architecture from the image below.
+Overview From the image we can notice that the function that check the malicious files content is AmsiScanBuffer() and AmsiScanString()."
 />
 <meta
   name="keywords"
@@ -47,16 +48,18 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Memory Patching (AMSI Bypass)"/>
-<meta name="twitter:description" content="Introduction ألسلام عليكم  معظمنا واجه ال (Antimalware Scan Interface) أو المعروفة ب `AMSI`. وغالباً واجهتم مشاكل في اي وقت حاولتم تضيفون powershell module مثل `Mimikatz` وغيرها. ال `AMSI` رح يصيرل له load في أي Application يستخدم ال `WIN32 API`. تقدرون تطلعون على ال `AMSI architecture` من الصورة الي بالأسفل  Overview من الصورة نقدر نلاحظ ان ال function المسؤل عن التشيك على الملفات الخبيثة هو `AmsiScanBuffer()` و `AmsiScanString()`. نقدر نستخدم `Process Hacker` ونشوف ايش ال Modules الي جالسة تشتغل مع اي برنامج."/>
+<meta name="twitter:description" content="Introduction Hello everyone. I think we all have faced the (Antimalware Scan Interface) or as known as the AMSI. I also belive you had some problem when loading for example a powershell modules like Mimikatz. In small words, the AMSI will be loaded in any application that uses WIN32 API. You can also check the AMSI architecture from the image below.
+Overview From the image we can notice that the function that check the malicious files content is AmsiScanBuffer() and AmsiScanString()."/>
 
 
 
 <meta property="og:title" content="Memory Patching (AMSI Bypass)" />
-<meta property="og:description" content="Introduction ألسلام عليكم  معظمنا واجه ال (Antimalware Scan Interface) أو المعروفة ب `AMSI`. وغالباً واجهتم مشاكل في اي وقت حاولتم تضيفون powershell module مثل `Mimikatz` وغيرها. ال `AMSI` رح يصيرل له load في أي Application يستخدم ال `WIN32 API`. تقدرون تطلعون على ال `AMSI architecture` من الصورة الي بالأسفل  Overview من الصورة نقدر نلاحظ ان ال function المسؤل عن التشيك على الملفات الخبيثة هو `AmsiScanBuffer()` و `AmsiScanString()`. نقدر نستخدم `Process Hacker` ونشوف ايش ال Modules الي جالسة تشتغل مع اي برنامج." />
+<meta property="og:description" content="Introduction Hello everyone. I think we all have faced the (Antimalware Scan Interface) or as known as the AMSI. I also belive you had some problem when loading for example a powershell modules like Mimikatz. In small words, the AMSI will be loaded in any application that uses WIN32 API. You can also check the AMSI architecture from the image below.
+Overview From the image we can notice that the function that check the malicious files content is AmsiScanBuffer() and AmsiScanString()." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/memorypatching/" />
-<meta property="article:published_time" content="2021-12-25T21:56:40-05:00" />
-<meta property="article:modified_time" content="2021-12-25T21:56:40-05:00" /><meta property="og:site_name" content="Confidential Team" />
+<meta property="article:published_time" content="2021-12-26T09:18:17-05:00" />
+<meta property="article:modified_time" content="2021-12-26T09:18:17-05:00" /><meta property="og:site_name" content="Confidential Team" />
 
 
 
@@ -147,7 +150,7 @@
     <div class="post-meta">
       
         <span class="post-date">
-          2021-12-25
+          2021-12-26
         </span>
 
         
@@ -172,57 +175,31 @@
     <div class="post-content">
       
       <h2 id="introduction">Introduction</h2>
-<DIV dir="rtl" align="right">
-ألسلام عليكم
-</DIV>
-<DIV dir="rtl" align="right">
-معظمنا واجه ال (Antimalware Scan Interface) أو المعروفة ب `AMSI`. وغالباً واجهتم مشاكل في اي وقت حاولتم تضيفون powershell module مثل `Mimikatz` وغيرها. ال `AMSI` رح يصيرل له load في أي Application يستخدم ال `WIN32 API`. تقدرون تطلعون على ال `AMSI architecture` من الصورة الي بالأسفل
-</DIV>
+<p>Hello everyone. I think we all have faced the (Antimalware Scan Interface) or as known as the <code>AMSI</code>. I also belive you had some problem when loading for example a powershell modules like <code>Mimikatz</code>. In small words, the <code>AMSI</code> will be loaded in any application that uses <code>WIN32 API</code>. You can also check the AMSI architecture from the image below.</p>
 <p><img src="../../img/memorypatching/readme/1.png" alt=""></p>
 <h2 id="overview">Overview</h2>
-<DIV dir="rtl" align="right">
-من الصورة نقدر نلاحظ ان ال function المسؤل عن التشيك على الملفات الخبيثة هو `AmsiScanBuffer()` و `AmsiScanString()`. نقدر نستخدم `Process Hacker` ونشوف ايش ال Modules الي جالسة تشتغل مع اي برنامج. فمثلاً في ال Powershell نقدر نشوف ان ال `amsi.dll` صاير له load في ال memory.
-</DIV>
+<p>From the image we can notice that the function that check the malicious files content is <code>AmsiScanBuffer()</code> and <code>AmsiScanString()</code>. We can use <code>Process Hacker</code> and check the modules that loads in any application. For example in Powershell we can notice that <code>amsi.dll</code> have been loaded in the memory.</p>
 <p><img src="../../img/memorypatching/readme/2.png" alt=""></p>
-<DIV dir="rtl" align="right">
-نقدر بنفس الوقت نشوف ال exported functions الي ذكرناهم سابقاً. تركيزنا رح يكون على ال `AmsiScanBuffer()`
-</DIV>
+<p>While we are looking at the Powershell process we could also check the exported functions of <code>amsi.dll</code>. We will be focusing on <code>AmsiScanBuffer()</code>.</p>
 <p><img src="../../img/memorypatching/readme/3.png" alt=""></p>
 <h2 id="amsiscanbuffer">AmsiScanBuffer()</h2>
-<DIV dir="rtl" align="right">
-اشتغلنا على ال reverse engineer لهذا ال function وفي نهايته شفنا هذه ال instructions:
-</DIV>
+<p>We reverse engineered <code>AmsiScanBuffer()</code> function by loading <code>amsi.dll</code> in <code>IDA</code>. At the end of the scanning process we can notice the follwoing instructions:</p>
 <p><img src="../../img/memorypatching/readme/4.png" alt=""></p>
 <h2 id="playing-with-windbg">Playing with WinDBG</h2>
-<DIV dir="rtl" align="right">
-نقدر نلاحظ أن ال process الخاصة بال scanning موجودة في اليسار. وفي المربع اليمين نقدر نشوف ال القيمة `0x0070057` والي هي عبارة عن error code من Microsoft. طيب ايش ممكن يصير اذا عدلنا على ال `AmsiScanBuffer()` في ال memory وخليناه دائماً يرجع لنا ال `0x80070057`. نقدر نجربها عن طريق WinDBG:
-</DIV>
+<p>From the image above we can notice that the proccess that is suppose to check files are located in the left box. Also if we take a look at the box in the right we can see a value <code>0x0070057</code>, which is a error code from Microsoft, and also know as <code>E_INVALIDARG</code>. So what could happen if we modified <code>AmsiScanBuffer()</code> fucntion in the memory and make it always return <code>E_INVALIDARG</code>. We can test that in <code>WinDBG</code>:</p>
 <p><img src="../../img/memorypatching/readme/5.gif" alt=""></p>
-<DIV dir="rtl" align="right">
-نقدر نشوف ال instructions الخاصة ب `AmsiScanBuffer()` وبنفس الوقت نقدر نشوف ال bytecode المقابل ل `mov eax,80070057h` والي هي `b857000780`. نقدر الأن نعدل على البداية الخاصة بال function عن طريق هذه ال instructions:
-</DIV>
+<p>We can look at the instructions of <code>AmsiScanBuffer()</code> and at the same time we can see the byte-code corresponding to <code>mov eax,80070057h</code>, which is <code>b857000780</code>. So we can try to modify the beginning of the function with the following instructions:</p>
 <pre><code class="language-assembly" data-lang="assembly">b857000780          mov eax,0x80070057
 c3                  ret
-</code></pre><DIV dir="rtl" align="right">
-الي رح يصير هو الأتي رح نودي `0x80070057` الى `EAX` والي رح تكون ال return value ل `AmsiScanBuffer()`. نقدر نسوي هذا الكلام عن طريق WinDBG أول شي شغل powershell وسوي لها attach في WinDBG. حاول تسوي load لاي شي ممكن ال AMSI يوقفه:
-</DIV>
+</code></pre><p>We are moving <code>0x80070057</code> to <code>EAX</code>, making it the return value of <code>AmsiScanBuffer()</code>, at the end the function ends with <code>RET</code>. We can test that by attaching a Powershell process to WinDBG, and try to invoke any malicious file like <code>Mimikatz</code> for example. Just to make sure the AMSI will stop it.</p>
 <p><img src="../../img/memorypatching/readme/6.png" alt=""></p>
-<DIV dir="rtl" align="right">
-الأن لازم نسوي reverse لل byte-code `mov eax,0x80070057 | ret` فتصير: `c380070057b8`. نقدر نستخدمها ونعدل على ال function عن طريق هذا الكوماند: 
-</DIV>
+<p>At this moment we will need to reverse the byte-code of <code>mov eax,0x80070057 | ret</code> which will be <code>c380070057b8</code>. We can use it to modify the function in WinDBG using the following command:</p>
 <pre><code>eq amsi!AmsiScanBuffer c380070057b8
-</code></pre><DIV dir="rtl" align="right">
-وبعدها رح تقدر تسوي load لاي module تحتاجها.
-</DIV>
+</code></pre><p>After that you will be able to load any module you wish to use.</p>
 <p><img src="../../img/memorypatching/readme/7.gif" alt=""></p>
 <h2 id="demo">Demo</h2>
 <p>We at Confidential Team belive in developing our own tools. You can find below a demo of our own script that patch the memory for you. The code will be shared later in 2022.</p>
 <p><img src="../../img/memorypatching/readme/8.gif" alt=""></p>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://rastamouse.me/memory-patching-amsi-bypass/">https://rastamouse.me/memory-patching-amsi-bypass/</a></li>
-<li><a href="https://github.com/rasta-mouse/AmsiScanBufferBypass">https://github.com/rasta-mouse/AmsiScanBufferBypass</a></li>
-</ul>
 
     </div>
     
@@ -238,8 +215,8 @@ c3                  ret
             
             
               <span class="button next">
-                <a href="/posts/mypost/">
-                  <span class="button__text">Mypost</span>
+                <a href="/posts/memorypatchingar/">
+                  <span class="button__text">Memory Patching (AMSI Bypass)</span>
                   <span class="button__icon">→</span>
                 </a>
               </span>

@@ -9,7 +9,7 @@
     <description>Recent content in Posts on Confidential Team</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Dec 2021 21:56:40 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 26 Dec 2021 09:18:17 -0500</lastBuildDate>
     
 	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,9 +17,30 @@
     <item>
       <title>Memory Patching (AMSI Bypass)</title>
       <link>/posts/memorypatching/</link>
-      <pubDate>Sat, 25 Dec 2021 21:56:40 -0500</pubDate>
+      <pubDate>Sun, 26 Dec 2021 09:18:17 -0500</pubDate>
       
       <guid>/posts/memorypatching/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Introduction Hello everyone. I think we all have faced the (Antimalware Scan Interface) or as known as the AMSI. I also belive you had some problem when loading for example a powershell modules like Mimikatz. In small words, the AMSI will be loaded in any application that uses WIN32 API. You can also check the AMSI architecture from the image below.
+Overview From the image we can notice that the function that check the malicious files content is AmsiScanBuffer() and AmsiScanString().
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Memory Patching (AMSI Bypass)</title>
+      <link>/posts/memorypatchingar/</link>
+      <pubDate>Sat, 25 Dec 2021 21:56:40 -0500</pubDate>
+      
+      <guid>/posts/memorypatchingar/</guid>
       <description>
         
           
