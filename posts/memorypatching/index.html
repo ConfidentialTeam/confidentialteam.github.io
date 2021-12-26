@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Memory Patching (AMSI Bypass) ::
+        Confidential Team — UnKn0wn
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="ألسلام عليكم  معظمنا واجه ال (Antimalware Scan Interface) أو المعروفة ب `AMSI`. وغالباً واجهتم مشاكل في اي وقت حاولتم تضيفون powershell module مثل `Mimikatz` وغيرها. ال `AMSI` رح يصيرل له load في أي Application يستخدم ال `WIN32 API`. تقدرون تطلعون على ال `AMSI architecture` من الصورة الي بالأسفل  من الصورة نقدر نلاحظ ان ال function المسؤل عن التشيك على الملفات الخبيثة هو `AmsiScanBuffer()` و `AmsiScanString()`. نقدر نستخدم `Process Hacker` ونشوف ايش ال Modules الي جالسة تشتغل مع اي برنامج."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/posts/memorypatching/" />
+
+
+
+
+
+<link rel="stylesheet" href="/assets/style.css" />
+
+<link rel="stylesheet" href="/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="/img/favicon.png" />
+
+
+<link href="/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Memory Patching (AMSI Bypass)"/>
+<meta name="twitter:description" content="ألسلام عليكم  معظمنا واجه ال (Antimalware Scan Interface) أو المعروفة ب `AMSI`. وغالباً واجهتم مشاكل في اي وقت حاولتم تضيفون powershell module مثل `Mimikatz` وغيرها. ال `AMSI` رح يصيرل له load في أي Application يستخدم ال `WIN32 API`. تقدرون تطلعون على ال `AMSI architecture` من الصورة الي بالأسفل  من الصورة نقدر نلاحظ ان ال function المسؤل عن التشيك على الملفات الخبيثة هو `AmsiScanBuffer()` و `AmsiScanString()`. نقدر نستخدم `Process Hacker` ونشوف ايش ال Modules الي جالسة تشتغل مع اي برنامج."/>
+
+
+
+<meta property="og:title" content="Memory Patching (AMSI Bypass)" />
+<meta property="og:description" content="ألسلام عليكم  معظمنا واجه ال (Antimalware Scan Interface) أو المعروفة ب `AMSI`. وغالباً واجهتم مشاكل في اي وقت حاولتم تضيفون powershell module مثل `Mimikatz` وغيرها. ال `AMSI` رح يصيرل له load في أي Application يستخدم ال `WIN32 API`. تقدرون تطلعون على ال `AMSI architecture` من الصورة الي بالأسفل  من الصورة نقدر نلاحظ ان ال function المسؤل عن التشيك على الملفات الخبيثة هو `AmsiScanBuffer()` و `AmsiScanString()`. نقدر نستخدم `Process Hacker` ونشوف ايش ال Modules الي جالسة تشتغل مع اي برنامج." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/memorypatching/" />
+<meta property="article:published_time" content="2021-12-25T21:56:40-05:00" />
+<meta property="article:modified_time" content="2021-12-25T21:56:40-05:00" /><meta property="og:site_name" content="Confidential Team" />
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Confidential Team</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Memory Patching (AMSI Bypass)</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2021-12-25
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+        <span class="post-read-time"
+          >— 2 min read</span
+        >
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <DIV dir="rtl" align="right">
+ألسلام عليكم
+</DIV>
+<DIV dir="rtl" align="right">
+معظمنا واجه ال (Antimalware Scan Interface) أو المعروفة ب `AMSI`. وغالباً واجهتم مشاكل في اي وقت حاولتم تضيفون powershell module مثل `Mimikatz` وغيرها. ال `AMSI` رح يصيرل له load في أي Application يستخدم ال `WIN32 API`. تقدرون تطلعون على ال `AMSI architecture` من الصورة الي بالأسفل
+</DIV>
+<p><img src="/img/MemoryPatching/1.png" alt=""></p>
+<DIV dir="rtl" align="right">
+من الصورة نقدر نلاحظ ان ال function المسؤل عن التشيك على الملفات الخبيثة هو `AmsiScanBuffer()` و `AmsiScanString()`. نقدر نستخدم `Process Hacker` ونشوف ايش ال Modules الي جالسة تشتغل مع اي برنامج. فمثلاً في ال Powershell نقدر نشوف ان ال `amsi.dll` صاير له load في ال memory.
+</DIV>
+<p><img src="/img/MemoryPatching/2.png" alt=""></p>
+<DIV dir="rtl" align="right">
+نقدر بنفس الوقت نشوف ال exported functions الي ذكرناهم سابقاً. تركيزنا رح يكون على ال `AmsiScanBuffer()`
+</DIV>
+<p><img src="/img/MemoryPatching/3.png" alt=""></p>
+<DIV dir="rtl" align="right">
+اشتغلنا على ال reverse engineer لهذا ال function وفي نهايته شفنا هذه ال instructions:
+</DIV>
+<p><img src="/img/MemoryPatching/4.png" alt=""></p>
+<DIV dir="rtl" align="right">
+نقدر نلاحظ أن ال process الخاصة بال scanning موجودة في اليسار. وفي المربع اليمين نقدر نشوف ال القيمة `0x0070057` والي هي عبارة عن error code من Microsoft. طيب ايش ممكن يصير اذا عدلنا على ال `AmsiScanBuffer()` في ال memory وخليناه دائماً يرجع لنا ال `0x80070057`. نقدر نجربها عن طريق WinDBG:
+</DIV>
+<p><img src="/img/MemoryPatching/5.gif" alt=""></p>
+<DIV dir="rtl" align="right">
+نقدر نشوف ال instructions الخاصة ب `AmsiScanBuffer()` وبنفس الوقت نقدر نشوف ال bytecode المقابل ل `mov eax,80070057h` والي هي `b857000780`. نقدر الأن نعدل على البداية الخاصة بال function عن طريق هذه ال instructions:
+</DIV>
+<pre><code class="language-assembly" data-lang="assembly">b857000780          mov eax,0x80070057
+c3                  ret
+</code></pre><DIV dir="rtl" align="right">
+الي رح يصير هو الأتي رح نودي `0x80070057` الى `EAX` والي رح تكون ال return value ل `AmsiScanBuffer()`. نقدر نسوي هذا الكلام عن طريق WinDBG أول شي شغل powershell وسوي لها attach في WinDBG. حاول تسوي load لاي شي ممكن ال AMSI يوقفه:
+</DIV>
+<p><img src="/img/MemoryPatching/6.png" alt=""></p>
+<DIV dir="rtl" align="right">
+الأن لازم نسوي reverse لل byte-code `mov eax,0x80070057 | ret` فتصير: `c380070057b8`. نقدر نستخدمها ونعدل على ال function عن طريق هذا الكوماند: 
+</DIV>
+<pre><code>eq amsi!AmsiScanBuffer c380070057b8
+</code></pre><DIV dir="rtl" align="right">
+وبعدها رح تقدر تسوي load لاي module تحتاجها.
+</DIV>
+<p>Check The Demo below:</p>
+<p><img src="/img/MemoryPatching/7.gif" alt=""></p>
+<p>We at Confidential Team belive in developing our own tools. You can find below a demo of our own script that patch the memory for you. The code will be shared later in 2022.</p>
+<p><img src="/img/MemoryPatching/8.gif" alt=""></p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="/posts/mypost/">
+                  <span class="button__text">Mypost</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Confidential Team</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2021 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

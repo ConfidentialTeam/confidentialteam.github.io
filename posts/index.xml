@@ -9,10 +9,30 @@
     <description>Recent content in Posts on Confidential Team</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Dec 2021 18:42:51 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 25 Dec 2021 21:56:40 -0500</lastBuildDate>
     
 	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Memory Patching (AMSI Bypass)</title>
+      <link>/posts/memorypatching/</link>
+      <pubDate>Sat, 25 Dec 2021 21:56:40 -0500</pubDate>
+      
+      <guid>/posts/memorypatching/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          ألسلام عليكم  معظمنا واجه ال (Antimalware Scan Interface) أو المعروفة ب `AMSI`. وغالباً واجهتم مشاكل في اي وقت حاولتم تضيفون powershell module مثل `Mimikatz` وغيرها. ال `AMSI` رح يصيرل له load في أي Application يستخدم ال `WIN32 API`. تقدرون تطلعون على ال `AMSI architecture` من الصورة الي بالأسفل  من الصورة نقدر نلاحظ ان ال function المسؤل عن التشيك على الملفات الخبيثة هو `AmsiScanBuffer()` و `AmsiScanString()`. نقدر نستخدم `Process Hacker` ونشوف ايش ال Modules الي جالسة تشتغل مع اي برنامج.
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>Mypost</title>
