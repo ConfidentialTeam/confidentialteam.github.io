@@ -9,10 +9,51 @@
     <description>Recent content on Confidential Team</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Dec 2021 09:18:17 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jan 2022 16:57:00 -0500</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Infiltrationar</title>
+      <link>/posts/infiltrationar/</link>
+      <pubDate>Mon, 03 Jan 2022 16:57:00 -0500</pubDate>
+      
+      <guid>/posts/infiltrationar/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Introduction ألسلام عليكم  سمعنا كثير عن طرق تستخدم لنقل الملفات لجهاز الضحية ومعظم هذه الطرق صارة منتشرة الا درجة انها صارت سهلة الأكتشاف. في Confidential اتخذنا خطوة جديدة في نقل الملفات مما خلاها معقدة ليتم اكتشافها. رح تشوفون اليوم كيف قدرنا ننقل CS beacon عن طريق اكثر من medium.  Brief في البداية قسمنا ال CS beacon الى عدة قطع والي بعدين رح يتم نقلها عن طريق اكثر من medium (DNS TXT record, HTTP response header, and SMTP server&#39;s banner) وكل هذا يصير عن طريق برنامج خاص بالفريق وتقدرون تشوفون ال demo في النهاية.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Infiltrating CS Beacon through out different mediums</title>
+      <link>/posts/infiltration/</link>
+      <pubDate>Mon, 03 Jan 2022 16:56:40 -0500</pubDate>
+      
+      <guid>/posts/infiltration/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Introduction: Hello Everyone, We all have heard of many infiltration techniques that were widely used making them easy to be detected. so we at Confidential took a step toward an infiltration technique that will make it a bit more complex in order not to be detected by any sense. Today&amp;rsquo;s article will clarify how we have infiltrated CS beacon through out different mediums.
+Brief We splitted the CS beacon into multiple chunks that will be later infiltrated from different mediums (DNS txt record, custome HTTP response header, and SMTP server&amp;rsquo;s banner) using an executable agent that we will show a full demo about at the end of the article.
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>Memory Patching (AMSI Bypass)</title>
