@@ -4,16 +4,21 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2022-01-13T18:46:58-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/cve-2022-21661/</loc>
-    <lastmod>2022-01-13T18:46:58-05:00</lastmod>
+    <lastmod>2022-02-09T21:37:30-05:00</lastmod>
   </url>
   
   <url>
     <loc>/posts/</loc>
+    <lastmod>2022-02-09T21:37:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/wdeg-bypassingasrar/</loc>
+    <lastmod>2022-02-09T21:37:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/cve-2022-21661/</loc>
     <lastmod>2022-01-13T18:46:58-05:00</lastmod>
   </url>
   

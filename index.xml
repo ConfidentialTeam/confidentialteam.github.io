@@ -9,10 +9,31 @@
     <description>Recent content on Confidential Team</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Jan 2022 18:46:58 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 09 Feb 2022 21:37:30 -0500</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WDEG - Bypassing ASR</title>
+      <link>/posts/wdeg-bypassingasrar/</link>
+      <pubDate>Wed, 09 Feb 2022 21:37:30 -0500</pubDate>
+      
+      <guid>/posts/wdeg-bypassingasrar/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          السلام عليكم ورحمة الله وبركاته  معظمنا واجه او سمع عن ال Windows Defender Exploit Guard وعناصره. في هذي المقالة راح يتم شرح عن المفهوم الرئيس ي وشرح احد العناصر مع احد التخطيات لها.
+ What is Windows Defender Exploit Guard? هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز منال malware ومن عدة هجمات على المستخدم  ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain  WDEG Components: - Attack Surface Reduction (ASR) يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع - حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها لتحكم في وصول إلى مجلد ما - يمنع العمليات غير الموثوق بها من الوصول إلى المجلدات المرقابة / المحمية الحماية من الاستغلال - لتطبيق إعدادات التخفيف على مستوى النظام مثل DEP و ASLR و CFG وما إلى ذلك  
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>Detailed Static/Dynamic Analysis For (CVE-2022-21661)</title>

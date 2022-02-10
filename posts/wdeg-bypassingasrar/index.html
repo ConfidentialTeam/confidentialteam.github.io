@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        WDEG - Bypassing ASR ::
+        Confidential Team — UnKn0wn
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="السلام عليكم ورحمة الله وبركاته  معظمنا واجه او سمع عن ال Windows Defender Exploit Guard وعناصره. في هذي المقالة راح يتم شرح عن المفهوم الرئيس ي وشرح احد العناصر مع احد التخطيات لها.
+ What is Windows Defender Exploit Guard? هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز منال malware ومن عدة هجمات على المستخدم  ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain  WDEG Components: - Attack Surface Reduction (ASR) يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع - حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها لتحكم في وصول إلى مجلد ما - يمنع العمليات غير الموثوق بها من الوصول إلى المجلدات المرقابة / المحمية الحماية من الاستغلال - لتطبيق إعدادات التخفيف على مستوى النظام مثل DEP و ASLR و CFG وما إلى ذلك  "
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/posts/wdeg-bypassingasrar/" />
+
+
+
+
+
+<link rel="stylesheet" href="/assets/style.css" />
+
+<link rel="stylesheet" href="/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="/img/favicon.png" />
+
+
+<link href="/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="WDEG - Bypassing ASR"/>
+<meta name="twitter:description" content="السلام عليكم ورحمة الله وبركاته  معظمنا واجه او سمع عن ال Windows Defender Exploit Guard وعناصره. في هذي المقالة راح يتم شرح عن المفهوم الرئيس ي وشرح احد العناصر مع احد التخطيات لها.
+ What is Windows Defender Exploit Guard? هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز منال malware ومن عدة هجمات على المستخدم  ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain  WDEG Components: - Attack Surface Reduction (ASR) يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع - حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها لتحكم في وصول إلى مجلد ما - يمنع العمليات غير الموثوق بها من الوصول إلى المجلدات المرقابة / المحمية الحماية من الاستغلال - لتطبيق إعدادات التخفيف على مستوى النظام مثل DEP و ASLR و CFG وما إلى ذلك  "/>
+
+
+
+<meta property="og:title" content="WDEG - Bypassing ASR" />
+<meta property="og:description" content="السلام عليكم ورحمة الله وبركاته  معظمنا واجه او سمع عن ال Windows Defender Exploit Guard وعناصره. في هذي المقالة راح يتم شرح عن المفهوم الرئيس ي وشرح احد العناصر مع احد التخطيات لها.
+ What is Windows Defender Exploit Guard? هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز منال malware ومن عدة هجمات على المستخدم  ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain  WDEG Components: - Attack Surface Reduction (ASR) يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع - حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها لتحكم في وصول إلى مجلد ما - يمنع العمليات غير الموثوق بها من الوصول إلى المجلدات المرقابة / المحمية الحماية من الاستغلال - لتطبيق إعدادات التخفيف على مستوى النظام مثل DEP و ASLR و CFG وما إلى ذلك  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/wdeg-bypassingasrar/" />
+<meta property="article:published_time" content="2022-02-09T21:37:30-05:00" />
+<meta property="article:modified_time" content="2022-02-09T21:37:30-05:00" /><meta property="og:site_name" content="Confidential Team" />
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Confidential Team</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">WDEG - Bypassing ASR</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2022-02-09
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+        <span class="post-read-time"
+          >— 1 min read</span
+        >
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <DIV dir="rtl" align="right">
+السلام عليكم ورحمة الله وبركاته
+</DIV>
+<DIV dir="rtl" align="right">
+معظمنا واجه او سمع عن ال Windows Defender Exploit Guard وعناصره.
+<p>في هذي المقالة راح يتم شرح عن المفهوم الرئيس ي وشرح احد العناصر مع احد التخطيات لها.</p>
+</DIV>
+<h2 id="what-is-windows-defender-exploit-guard">What is Windows Defender Exploit Guard?</h2>
+<DIV dir="rtl" align="right">
+هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز منال malware ومن عدة هجمات على المستخدم
+</DIV>
+<DIV dir="rtl" align="right">
+ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain
+</DIV>
+<h2 id="wdeg-components">WDEG Components:</h2>
+<DIV dir="rtl" align="right">
+- Attack Surface Reduction (ASR) يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع
+- حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها
+لتحكم في وصول إلى مجلد ما - يمنع العمليات غير الموثوق بها من الوصول إلى المجلدات المرقابة / المحمية
+الحماية من الاستغلال - لتطبيق إعدادات التخفيف على مستوى النظام مثل DEP و ASLR و CFG وما إلى ذلك
+</DIV>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="/posts/cve-2022-21661/">
+                  <span class="button__text">Detailed Static/Dynamic Analysis For (CVE-2022-21661)</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Confidential Team</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2022 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>
