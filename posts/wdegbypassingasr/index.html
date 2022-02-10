@@ -250,11 +250,11 @@ What is Windows Defender Exploit Guard? Windows Defender Exploit Guard is a soft
 <p>Which means that the JavaScript and VBScript can be used by malware to run other malicious applications.</p>
 <p>Note the ASR will not block or audit any of the execution methods unless the script executes a VBScript / JS request.</p>
 <p>You can configure the ASR blocking rule by using the Add-MpPreference using the GUIDs and specifying the right action with this command:</p>
-<pre><code>-Add-MpPreference -AttackSurfaceReductionRules_Ids D3E037E1-3EB8-44C8-A917-57927947596D -AttackSurfaceReductionRules_Actions Enabled-
+<pre><code>-Add-MpPreference -AttackSurfaceReductionRules_Ids D3E037E1-3EB8-44C8-A917-57927947596D -AttackSurfaceReductionRules_Actions Enabled
 </code></pre><h2 id="demo">Demo</h2>
 <p>Our team developed a tool that Bypass WDEG - ASR with some more features. Here&rsquo;s a demo of that tool while executing of the requests:</p>
 <p><img src="../../img/WDEG/2.gif" alt=""></p>
-<p>Ps: This technique will be illustrated with all the codes used above in one of our coming Training.</p>
+<p>PS: This technique will be illustrated with all the codes used above in one of our coming Training.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/attack-surface-reduction?view=o365-worldwide">https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/attack-surface-reduction?view=o365-worldwide</a></li>
