@@ -1,0 +1,41 @@
+---
+title: "WDEG - Bypassing ASR"
+date: 2022-02-09T21:37:30-05:00
+---
+
+
+<DIV dir="rtl" align="right">
+السلام عليكم ورحمة الله وبركاته
+</DIV>
+
+<DIV dir="rtl" align="right">
+معظمنا واجه او سمع عن ال Windows Defender Exploit Guard وعناصره.
+
+في هذي المقالة راح يتم شرح عن المفهوم الرئيس ي وشرح احد العناصر مع احد التخطيات لها.
+</DIV>
+
+
+
+## What is Windows Defender Exploit Guard?
+
+
+<DIV dir="rtl" align="right">
+هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز منال malware ومن عدة هجمات على المستخدم
+</DIV>
+
+
+<DIV dir="rtl" align="right">
+ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain
+</DIV>
+
+
+
+## WDEG Components:
+
+<DIV dir="rtl" align="right">
+- Attack Surface Reduction (ASR) يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع
+
+- حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها -
+تحكم في وصول إلى مجلد ما - يمنع العمليات غير الموثوق بها من الوصول إلى المجلدات المرقابة / المحمية
+الحماية من الاستغلال - لتطبيق إعدادات التخفيف على مستوى النظام مثل DEP و ASLR و CFG وما إلى ذلك
+</DIV>

@@ -11,16 +11,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="السلام عليكم ورحمة الله وبركاته  معظمنا واجه او سمع عن الـ Windows Defender Exploit Guard وعناصره. في هذي المقالة راح يتم شرح عن المفهوم الرئيسي وشرح احد العناصر مع احد التخطيات لها.
- What is Windows Defender Exploit Guard? هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز من الـ malware ومن عدة هجمات على المستخدم
- ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain  WDEG Components: Attack Surface Reduction (ASR) - يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها."
+  content="Introduction: Most of us have heard about what&amp;rsquo;s called ( Windows Defender Exploit Guard ) and its components.
+This article will illustrate the main idea of Windows Defender Exploit Guard and one of its components and its bypass.
+What is Windows Defender Exploit Guard? Windows Defender Exploit Guard is a software which&amp;rsquo;s being part of the Windows Defender Security Center that protects Windows OS mainly from Malware and other attacks."
 />
 <meta
   name="keywords"
   content=""
 />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="/posts/wdeg-bypassingasrar/" />
+<link rel="canonical" href="/posts/wdegbypassingasr/" />
 
 
 
@@ -49,20 +49,20 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="WDEG - Bypassing The ASR"/>
-<meta name="twitter:description" content="السلام عليكم ورحمة الله وبركاته  معظمنا واجه او سمع عن الـ Windows Defender Exploit Guard وعناصره. في هذي المقالة راح يتم شرح عن المفهوم الرئيسي وشرح احد العناصر مع احد التخطيات لها.
- What is Windows Defender Exploit Guard? هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز من الـ malware ومن عدة هجمات على المستخدم
- ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain  WDEG Components: Attack Surface Reduction (ASR) - يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها."/>
+<meta name="twitter:description" content="Introduction: Most of us have heard about what&rsquo;s called ( Windows Defender Exploit Guard ) and its components.
+This article will illustrate the main idea of Windows Defender Exploit Guard and one of its components and its bypass.
+What is Windows Defender Exploit Guard? Windows Defender Exploit Guard is a software which&rsquo;s being part of the Windows Defender Security Center that protects Windows OS mainly from Malware and other attacks."/>
 
 
 
 <meta property="og:title" content="WDEG - Bypassing The ASR" />
-<meta property="og:description" content="السلام عليكم ورحمة الله وبركاته  معظمنا واجه او سمع عن الـ Windows Defender Exploit Guard وعناصره. في هذي المقالة راح يتم شرح عن المفهوم الرئيسي وشرح احد العناصر مع احد التخطيات لها.
- What is Windows Defender Exploit Guard? هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز من الـ malware ومن عدة هجمات على المستخدم
- ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain  WDEG Components: Attack Surface Reduction (ASR) - يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها." />
+<meta property="og:description" content="Introduction: Most of us have heard about what&rsquo;s called ( Windows Defender Exploit Guard ) and its components.
+This article will illustrate the main idea of Windows Defender Exploit Guard and one of its components and its bypass.
+What is Windows Defender Exploit Guard? Windows Defender Exploit Guard is a software which&rsquo;s being part of the Windows Defender Security Center that protects Windows OS mainly from Malware and other attacks." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/wdeg-bypassingasrar/" />
-<meta property="article:published_time" content="2022-02-09T21:37:30-05:00" />
-<meta property="article:modified_time" content="2022-02-09T21:37:30-05:00" /><meta property="og:site_name" content="Confidential Team" />
+<meta property="og:url" content="/posts/wdegbypassingasr/" />
+<meta property="article:published_time" content="2022-02-10T14:46:20-05:00" />
+<meta property="article:modified_time" content="2022-02-10T14:46:20-05:00" /><meta property="og:site_name" content="Confidential Team" />
 
 
 
@@ -153,7 +153,7 @@
     <div class="post-meta">
       
         <span class="post-date">
-          2022-02-09
+          2022-02-10
         </span>
 
         
@@ -177,36 +177,22 @@
 
     <div class="post-content">
       
-      <DIV dir="rtl" align="right">
-السلام عليكم ورحمة الله وبركاته
-</DIV>
-<DIV dir="rtl" align="right">
-معظمنا واجه او سمع عن الـ Windows Defender Exploit Guard وعناصره.
-<p>في هذي المقالة راح يتم شرح عن المفهوم الرئيسي وشرح احد العناصر مع احد التخطيات لها.</p>
-</DIV>
+      <h2 id="introduction">Introduction:</h2>
+<p>Most of us have heard about what&rsquo;s called ( Windows Defender Exploit Guard ) and its components.</p>
+<p>This article will illustrate the main idea of Windows Defender Exploit Guard and one of its components and its bypass.</p>
 <h2 id="what-is-windows-defender-exploit-guard">What is Windows Defender Exploit Guard?</h2>
-<DIV dir="rtl" align="right">
-<p>هو عبارة عن software كجزء من Windows Defender Security Center والذي بدوره يقوم بحماية انظمة تشغيل ويندوز من الـ malware ومن عدة هجمات على المستخدم</p>
-</DIV>
-<DIV dir="rtl" align="right">
-ايضا تم تصميم WDEG وعناصره الاربع لأغلاق الجهاز ضد اي تهديد او هجوم شائع عن طريق حظره في مراحل مختلفة من الـ Kill chain
-</DIV>
+<p>Windows Defender Exploit Guard is a software which&rsquo;s being part of the Windows Defender Security Center that protects Windows OS mainly from Malware and other attacks.</p>
 <h2 id="wdeg-components">WDEG Components:</h2>
-<DIV dir="rtl" align="right">
-Attack Surface Reduction (ASR) - يستفيد من برنامج مكافحة الفيروسات Windows Defender (WDAV) لتعطيل الهجمات التي يتم استخدامها بشكل شائع
-<p>حماية الشبكة - يحظر التهديدات التي تؤدي إلى إنشاء اتصال خارجي او IPS غير موثوق بها.</p>
-<p>التحكم في الوصول إلى مجلد ما - يمنع العمليات غير الموثوق بها من الوصول إلى المجلدات المرقابة / المحمية.</p>
-<p>الحماية من الاستغلال - لتطبيق إعدادات التخفيف على مستوى النظام مثل DEP و ASLR و CFG وما إلى ذلك.</p>
-<br>
-<p>تم تركيزنا على احد عناصر الـ WDEG وهو Attack Surface Reduction.</p>
-<p>كما ذكرنا سابقا ً، ان الـ ASR يُعطل الهجمات المستخدمة بشكل شائع:</p>
-</DIV>
+<ul>
+<li>Attack Surface Reduction (ASR) – Leverages Windows Defender Anti Virus (WDAV) to disrupt commonly abused attack primitives.</li>
+<li>Network Protection – Blocks threats establishing outbound connection to untrusted domains / IPs.</li>
+<li>Controlled Folder Access – Blocks untrusted processes from accessing controlled / protected folders.</li>
+<li>Exploit Protection – Applies system wide mitigation settings like DEP, ASLR, CFG etc</li>
+</ul>
+<p>We focused on one of the WDEG components which&rsquo;s the Attack Surface Reduction ( ASR ).</p>
+<p>As mentioned above, the ARS blocks widely used attacks:</p>
 <p><img src="../../img/WDEG/1.png" alt=""></p>
-<DIV dir="rtl" align="right">
-يستخدم الـ ASR قواعد تم تعيننها باستخدام GUDIs ويمكن فرضها باستخدام
-PowerShell Windows Defender Package , Local Group Policy
-<p>وهذه أمثلة على قواعد الـ ASR:</p>
-</DIV>
+<p>ASR uses rules mapped with GUIDs and can be enforced using PowerShell Windows Defender Package, SCCM, GPO, Local Group Policy.</p>
 <ul>
 <li>Block executable content from email client and webmail</li>
 <li>Block all Office applications from creating child processes</li>
@@ -223,13 +209,9 @@ PowerShell Windows Defender Package , Local Group Policy
 <li>Block Office communication application from creating child processes</li>
 <li>Block Adobe Reader from creating child processes</li>
 </ul>
-<DIV dir="rtl" align="right">
-كما ذكرنا بان القواعد يتم تعيننها باستخدام GUDIs نبحث الان عن كل قاعدة واسمها عن طريق الـ Registry
-</DIV>
+<p>As mentioned above, the rules are being set by the GUIDs so now we can I search for each rule and its name through the Registry</p>
 <pre><code>[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsDefender\Windows Defender Exploit Guard\ASR\Rules]
-</code></pre><DIV dir="rtl" align="right">
-هنا كل قاعدة و GUDIs الخاص بها:
-</DIV>
+</code></pre><p>Here is each rule and its own GUDIs:</p>
 <pre><code>&quot;56a863a9-875e-4185-98a7-b882c64b5ce5&quot;=&quot;Block abuse of exploited vulnerable signed drivers&quot;
 
 &quot;7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c&quot;=&quot;Block Adobe Reader from creating child processes&quot;
@@ -261,28 +243,19 @@ PowerShell Windows Defender Package , Local Group Policy
 &quot;e6db77e5-3df2-4cf1-b95a-636979351e5b&quot;=&quot;Block persistence through WMI event subscription&quot;
 
 &quot;c1db55ab-c21a-4637-bb3f-a12568109d35&quot;=&quot;Use advanced protection against ransomware&quot;
-</code></pre><DIV dir="rtl" align="right">
-لناخذ هذه القاعدة Block JavaScript or VBScript from launching downloaded executable content
-</DIV>
-<h2 id="what-is-the-meaning-of-this-rule">What is the meaning of this rule?</h2>
-<DIV dir="rtl" align="right">
-<p>التعريف الحرفي هو حظر JavaScript or VBScript من تشغيل المحتوى القابل للتنفيذ الذي تم تنزيله, بمعنى انه بالأمكان استخدام نصوص JavaScript or VBScript بواسطة أحد الـ malware لتشغيل malicious apps.</p>
-<p>مع العلم بأن الـ ASR لن يحظر أو يراجع اي طرق تنفيذ اعتياديه بنفسه لكن عند قيام السكربت بتنفيذ request VBScript/Jscript يقوم الـ ASR بوظيفته.</p>
-<p>بأمكانك تكوين وأعداد قاعدة ASR لحظر اي تهديد من خلال الـ GUIDs وتحديد الاجراء المراد عن طريق هذا الامر:</p>
-</DIV>
-<pre><code>Add-MpPreference -AttackSurfaceReductionRules_Ids D3E037E1-3EB8-44C8-A917-57927947596D -AttackSurfaceReductionRules_Actions Enabled
-</code></pre><DIV dir="rtl" align="right">
-او عن طريق اي اداة تقوم بذلك.
-</DIV>
-<h2 id="demo">Demo</h2>
-<DIV dir="rtl" align="right">
-قام فريقنا بتطوير سكربت لتخطي الـ WDEG – ASR مع بعض المميزات الاضافية ايضا وهنا نقوم بعرض السكربت وقيامه بتنفيذ أحد الطلبات:
-</DIV>
+</code></pre><p>Let&rsquo;s take this rule:</p>
+<pre><code>Block JavaScript or VBScript from launching downloaded executable content
+</code></pre><h2 id="what-is-the-meaning-of-this-rule">What is the meaning of this rule?</h2>
+<p>This rule prevents scripts from launching potentially malicious downloaded content. Malware written in JavaScript or VBScript often acts as a downloader to fetch and launch other malware from the Internet.  (According to Microsoft)</p>
+<p>Which means that the JavaScript and VBScript can be used by malware to run other malicious applications.</p>
+<p>Note the ASR will not block or audit any of the execution methods unless the script executes a VBScript / JS request.</p>
+<p>You can configure the ASR blocking rule by using the Add-MpPreference using the GUIDs and specifying the right action with this command:</p>
+<pre><code>-Add-MpPreference -AttackSurfaceReductionRules_Ids D3E037E1-3EB8-44C8-A917-57927947596D -AttackSurfaceReductionRules_Actions Enabled-
+</code></pre><h2 id="demo">Demo</h2>
+<p>Our team developed a tool that Bypass WDEG - ASR with some more features. Here&rsquo;s a demo of that tool while executing of the requests:</p>
 <p><img src="../../img/WDEG/2.gif" alt=""></p>
-<DIV dir="rtl" align="right">
-ملاحظة: سوف يتم شرح التكنيك بتفصيل اكثر مع مشاركة الاكواد في احد ال Trainings القادمة باذن الله.
-</DIV>
-<h2 id="references">References:</h2>
+<p>Ps: This technique will be illustrated with all the codes used above in one of our coming Training.</p>
+<h2 id="references">References</h2>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/attack-surface-reduction?view=o365-worldwide">https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/attack-surface-reduction?view=o365-worldwide</a></li>
 <li><a href="https://blog.palantir.com/microsoft-defender-attack-surface-reduction-recommendations-a5c7d41c3cf8">https://blog.palantir.com/microsoft-defender-attack-surface-reduction-recommendations-a5c7d41c3cf8</a></li>
@@ -301,17 +274,10 @@ PowerShell Windows Defender Package , Local Group Policy
           </div>
           <div class="pagination__buttons">
             
-              <span class="button previous">
-                <a href="/posts/wdegbypassingasr/">
-                  <span class="button__icon">←</span>
-                  <span class="button__text">WDEG - Bypassing The ASR</span>
-                </a>
-              </span>
-            
             
               <span class="button next">
-                <a href="/posts/cve-2022-21661/">
-                  <span class="button__text">Detailed Static/Dynamic Analysis For (CVE-2022-21661)</span>
+                <a href="/posts/wdeg-bypassingasrar/">
+                  <span class="button__text">WDEG - Bypassing The ASR</span>
                   <span class="button__icon">→</span>
                 </a>
               </span>
